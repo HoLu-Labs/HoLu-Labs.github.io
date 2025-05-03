@@ -1,153 +1,790 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fuzzy — AI File Assistant</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fuzzy - AI-Powered File Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #6B73FF 0%, #000DFF 100%);
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .demo-container {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .stats-card {
+            transition: all 0.3s ease;
+        }
+        .stats-card:hover {
+            transform: scale(1.03);
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover:after {
+            width: 100%;
+        }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
-  <!-- Header -->
-  <header class="w-full py-6 bg-white shadow">
-    <div class="container mx-auto flex items-center justify-between px-6">
-      <div class="flex items-center">
-        <img src="assets/logo.png" alt="Fuzzy logo" class="h-8 w-auto mr-2" />
-        <h1 class="text-2xl font-extrabold text-[#5ACCFD]">Fuzzy</h1>
-      </div>
-      <nav class="space-x-6">
-        <a href="#features" class="hover:text-[#5ACCFD]">Features</a>
-        <a href="#how-it-works" class="hover:text-[#5ACCFD]">How It Works</a>
-        <a href="#demo" class="hover:text-[#5ACCFD]">Demo</a>
-        <a href="#waitlist" class="px-4 py-2 bg-[#4ABBE0] text-white rounded-lg shadow hover:bg-[#3AAEDA]">Join Waitlist</a>
-      </nav>
-    </div>
-  </header>
-
-  <!-- Hero Section -->
-  <section class="pt-20 pb-32 bg-gradient-to-br from-[#4ABBE0] to-purple-600 text-white">
-    <div class="container mx-auto text-center px-6">
-      <h2 class="text-5xl font-extrabold mb-6">Find Any File in Seconds</h2>
-      <p class="text-xl mb-6 max-w-2xl mx-auto">Stop digging through folders. Search by description and let Fuzzy instantly surface the files you need—no more wasted time.</p>
-      <div class="space-x-4">
-        <a href="#waitlist" class="inline-block px-8 py-4 bg-white text-[#4ABBE0] font-semibold rounded-lg shadow hover:bg-gray-100">Get Early Access</a>
-        <a href="#demo" class="inline-block px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-[#4ABBE0]">Watch Demo</a>
-      </div>
-      <div class="mt-8 space-y-4">
-        <p class="italic">"Fuzzy, find me the image of Grand Canyon sunset"</p>
-        <p class="italic">"Fuzzy, find me the spreadsheet where I had my Q1 expenses"</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Features Section -->
-  <section id="features" class="py-20">
-    <div class="container mx-auto px-6">
-      <h3 class="text-3xl font-bold text-center mb-12">Why Fuzzy?</h3>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Instant Semantic Search -->
-        <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition">
-          <div class="mb-4 text-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" class="text-[#5ACCFD]" viewBox="0 0 24 24" stroke="currentColor" fill="none">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
+<body class="font-sans antialiased text-gray-800">
+    <!-- Navigation -->
+    <nav class="gradient-bg text-white fixed w-full z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16 items-center">
+          <div class="flex items-center">
+            <div class="flex-shrink-0 flex items-center">
+              <img src="assets/logo.png" alt="Fuzzy logo" class="h-8 w-auto mr-2"/>
+              <span class="text-xl font-bold">Fuzzy</span>
+            </div>
           </div>
-          <h4 class="text-xl font-semibold mb-2">Instant Semantic Search</h4>
-          <p>Type “expense report for Customer A”, and Fuzzy discovers relevant files instantly, without manual hunting.</p>
-        </div>
-        <!-- Automated Summaries -->
-        <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition">
-          <div class="mb-4 text-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" class="text-[#5ACCFD]" viewBox="0 0 24 24" stroke="currentColor" fill="none">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6M4 6h16m-2 16V8l-6-6H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2z" />
-            </svg>
+          <div class="hidden md:block">
+            <div class="ml-10 flex items-baseline space-x-4">
+              <a href="#problem"
+                class="nav-link px-3 py-2 rounded-md text-sm font-medium">The Problem</a>
+              <a href="#solution"
+                class="nav-link px-3 py-2 rounded-md text-sm font-medium">Our Solution</a>
+              <a href="#features"
+                class="nav-link px-3 py-2 rounded-md text-sm font-medium">Features</a>
+              <a href="#demo"
+                class="nav-link px-3 py-2 rounded-md text-sm font-medium">Demo</a>
+              <a href="#stats"
+                class="nav-link px-3 py-2 rounded-md text-sm font-medium">Statistics</a>
+            </div>
           </div>
-          <h4 class="text-xl font-semibold mb-2">Automated Summaries</h4>
-          <p>Quickly understand any document—pdf, docx, txt, csv, xlsx, pptx, code, and more—with concise AI-generated summaries.</p>
-        </div>
-        <!-- Smart Rename -->
-        <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition">
-          <div class="mb-4 text-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" class="text-[#5ACCFD]" viewBox="0 0 24 24" stroke="currentColor" fill="none">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536M9 11l6-6m-6 6v9m0-9H3.5m13 0h3.5" />
-            </svg>
+          <div class="hidden md:block">
+            <a href="#join-waitlist"
+              class="ml-8 inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-blue-600 bg-white hover:bg-gray-100">
+              Join Waitlist
+            </a>
           </div>
-          <h4 class="text-xl font-semibold mb-2">Smart Rename</h4>
-          <p>Say goodbye to cryptic filenames. Fuzzy renames files based on content, so everything stays orderly.</p>
-        </div>
-        <!-- Intelligent Indexing -->
-        <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition">
-          <div class="mb-4 text-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" class="text-[#5ACCFD]" viewBox="0 0 24 24" stroke="currentColor" fill="none">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7a2 2 0 012-2h3l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z" />
-            </svg>
+          <div class="-mr-2 flex md:hidden">
+            <button type="button"
+                    class="inline-flex items-center justify-center p-2 rounded-md hover:bg-blue-700 focus:outline-none"
+                    aria-controls="mobile-menu" aria-expanded="false">
+              <span class="sr-only">Open main menu</span>
+              <i class="fas fa-bars text-white"></i>
+            </button>
           </div>
-          <h4 class="text-xl font-semibold mb-2">Intelligent Indexing</h4>
-          <p>Point Fuzzy at your downloads folder—AI monitors new files, summarizes, renames, and adds them to your searchable library.</p>
-        </div>
-        <!-- Universal Support -->
-        <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition">
-          <div class="mb-4 text-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" class="text-[#5ACCFD]" viewBox="0 0 24 24" stroke="currentColor" fill="none">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 2v6h6" />
-            </svg>
-          </div>
-          <h4 class="text-xl font-semibold mb-2">Universal Support</h4>
-          <p>pdf, docx, txt, csv, xlsx, pptx, code, and images—Fuzzy handles them all, so no file type is left behind.</p>
         </div>
       </div>
-    </div>
-  </section>
+    </nav>
 
-  <!-- How It Works -->
-  <section id="how-it-works" class="py-20 bg-white">
-    <div class="container mx-auto px-6">
-      <h3 class="text-3xl font-bold text-center mb-12">How It Works</h3>
-      <div class="space-y-12 max-w-3xl mx-auto text-center">
-        <div>
-          <h5 class="text-xl font-semibold mb-2">1. AI-Enabled Connection</h5>
-          <p>Link your folder and let Fuzzy’s AI ingest and understand your files automatically.</p>
+    <!-- Hero Section -->
+    <div class="gradient-bg pt-24 pb-32 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-12 lg:gap-8">
+                <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
+                    <h1 class="text-4xl tracking-tight font-extrabold sm:text-5xl md:text-6xl">
+                        <span class="block">Stop wasting time</span>
+                        <span class="block text-blue-200">searching for files</span>
+                    </h1>
+                    <p class="mt-3 text-base text-blue-100 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                        Fuzzy uses AI to instantly find, summarize, and organize your files—saving you hours every day.
+                    </p>
+                    <div class="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0">
+                        <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+                            <div class="rounded-md shadow">
+                              <a href="#join-waitlist"
+                                class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-blue-600 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10">
+                                Join Waitlist
+                              </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
+                    <div class="relative mx-auto w-full rounded-lg shadow-lg lg:max-w-md">
+                        <div class="relative block w-full bg-white rounded-lg overflow-hidden">
+                            <img class="w-full" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Person searching for files">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div>
-          <h5 class="text-xl font-semibold mb-2">2. AI-Powered Analysis</h5>
-          <p>Our AI generates summaries, extracts insights, and intelligently renames files based on their content.</p>
+    </div>
+
+    <!-- Problem Section -->
+    <div id="problem" class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="lg:text-center">
+          <h2 class="text-base text-blue-600 font-semibold tracking-wide uppercase">The Problem</h2>
+          <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+            File chaos is costing you time and money
+          </p>
+          <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+            Knowledge workers waste significant time—and companies lose money—just locating the information they need.
+          </p>
         </div>
-        <div>
-          <h5 class="text-xl font-semibold mb-2">3. AI-Driven Search</h5>
-          <p>Describe what you need or drop an image—Fuzzy’s AI will locate the matching file instantly.</p>
+
+        <div class="mt-20">
+          <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+
+            <!-- Hours Wasted Daily -->
+            <div class="pt-6">
+              <div class="flow-root bg-gray-50 rounded-lg px-6 pb-8 h-full">
+                <div class="-mt-6">
+                  <div>
+                    <span class="inline-flex items-center justify-center p-3 bg-blue-500 rounded-md shadow-lg">
+                      <i class="fas fa-clock text-white text-2xl"></i>
+                    </span>
+                  </div>
+                  <h3 class="mt-8 text-lg font-medium text-gray-900 tracking-tight">Hours Wasted Daily</h3>
+                  <p class="mt-5 text-base text-gray-500">
+                    Employees spend up to 2.5 hours per day searching for documents across local and cloud repositories
+                    (<a href="https://blog.ripcord.com/resources/the-real-cost-of-paper-why-government-must-digitize-now"
+                        target="_blank" rel="noopener noreferrer" class="text-blue-600 underline">IDC</a>).
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Per Document Search -->
+            <div class="pt-6">
+              <div class="flow-root bg-gray-50 rounded-lg px-6 pb-8 h-full">
+                <div class="-mt-6">
+                  <div>
+                    <span class="inline-flex items-center justify-center p-3 bg-blue-500 rounded-md shadow-lg">
+                      <i class="fas fa-file-alt text-white text-2xl"></i>
+                    </span>
+                  </div>
+                  <h3 class="mt-8 text-lg font-medium text-gray-900 tracking-tight">Per Document Search</h3>
+                  <p class="mt-5 text-base text-gray-500">
+                    Professionals take an average of 18 minutes to locate a single file
+                    (<a href="https://www.intellective.com/time-management-through-enterprise-search/"
+                        target="_blank" rel="noopener noreferrer" class="text-blue-600 underline">Gartner</a>).
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Productivity Costs -->
+            <div class="pt-6">
+              <div class="flow-root bg-gray-50 rounded-lg px-6 pb-8 h-full">
+                <div class="-mt-6">
+                  <div>
+                    <span class="inline-flex items-center justify-center p-3 bg-blue-500 rounded-md shadow-lg">
+                      <i class="fas fa-dollar-sign text-white text-2xl"></i>
+                    </span>
+                  </div>
+                  <h3 class="mt-8 text-lg font-medium text-gray-900 tracking-tight">Productivity Costs</h3>
+                  <p class="mt-5 text-base text-gray-500">
+                    Poor document management costs businesses approximately $19,732 per information worker per year
+                    (<a href="https://blog.ripcord.com/resources/the-true-cost-of-poor-document-management"
+                        target="_blank" rel="noopener noreferrer" class="text-blue-600 underline">IDC</a>).
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- Demo Section -->
-  <section id="demo" class="py-20 bg-white">
-    <div class="container mx-auto px-6 text-center">
-      <h3 class="text-3xl font-bold mb-6">Watch Fuzzy in Action</h3>
-      <video controls class="mx-auto max-w-full rounded-lg shadow-lg">
-        <source src="assets/demo.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-    </div>
-  </section>
 
-  <!-- Waitlist CTA -->
-  <section id="waitlist" class="py-20 bg-gradient-to-br from-[#4ABBE0] to-purple-600 text-white text-center">
-    <div class="container mx-auto px-6">
-      <h4 class="text-2xl font-bold mb-4">Never Lose a File Again</h4>
-      <p class="mb-6">Join the waitlist for early access to Fuzzy and reclaim your time.</p>
-      <form class="max-w-xl mx-auto flex flex-col sm:flex-row gap-4">
-        <input type="email" placeholder="Your email address" required class="flex-1 px-4 py-3 rounded-lg text-gray-800" />
-        <button type="submit" class="px-6 py-3 bg-white text-[#4ABBE0] font-semibold rounded-lg hover:bg-gray-100">Join Waitlist</button>
-      </form>
+    <!-- Solution Section -->
+    <div id="solution" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-12 lg:gap-8">
+                <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
+                    <h2 class="text-base text-blue-600 font-semibold tracking-wide uppercase">Our Solution</h2>
+                    <h1 class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                        AI-powered file management that works for you
+                    </h1>
+                    <p class="mt-3 text-lg text-gray-500 sm:mt-5 sm:text-xl sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                        Fuzzy brings semantic search, instant summarization, and automatic file renaming to your desktop.
+                    </p>
+                    <div class="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0">
+                        <p class="text-base text-gray-500">
+                            By indexing local folders and applying advanced language and vision models, Fuzzy surfaces relevant files in seconds, generates concise overviews of documents, spreadsheets, images, or code, and suggests descriptive filenames to keep workspaces organized.
+                        </p>
+                    </div>
+                </div>
+                <div class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
+                    <div class="relative mx-auto w-full rounded-lg shadow-xl overflow-hidden">
+                        <div class="aspect-w-16 aspect-h-9">
+                            <img class="w-full object-cover" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Fuzzy interface">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </section>
 
-  <!-- Footer -->
-  <footer class="py-8 bg-gray-100">
-    <div class="container mx-auto px-6 text-center text-gray-600">
-      <p>&copy; 2025 Fuzzy. All rights reserved.</p>
+    <!-- Features Section -->
+    <div id="features" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base text-blue-600 font-semibold tracking-wide uppercase">Features</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    Powerful tools to save you time
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+                    Fuzzy's AI capabilities transform how you interact with your files
+                </p>
+            </div>
+
+            <div class="mt-20">
+                <div class="space-y-12">
+                    <!-- Semantic Search Feature -->
+                    <div class="md:grid md:grid-cols-12 md:gap-8">
+                        <div class="mt-5 md:mt-0 md:col-span-7">
+                            <div class="feature-card transition-all duration-300 ease-in-out bg-white rounded-xl p-8 shadow-lg">
+                                <h3 class="text-2xl font-bold text-gray-900">
+                                    <i class="fas fa-search text-blue-500 mr-3"></i> Semantic Search
+                                </h3>
+                                <p class="mt-3 text-lg text-gray-500">
+                                    Find files by what they contain, not just their names. Fuzzy understands the meaning behind your search queries.
+                                </p>
+                                <ul class="mt-5 space-y-3">
+                                    <li class="flex items-start">
+                                        <div class="flex-shrink-0">
+                                            <i class="fas fa-check-circle text-green-500"></i>
+                                        </div>
+                                        <p class="ml-3 text-base text-gray-700">
+                                            Search across all file types including documents, spreadsheets, images, and code
+                                        </p>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="flex-shrink-0">
+                                            <i class="fas fa-check-circle text-green-500"></i>
+                                        </div>
+                                        <p class="ml-3 text-base text-gray-700">
+                                            Natural language understanding for more accurate results
+                                        </p>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="flex-shrink-0">
+                                            <i class="fas fa-check-circle text-green-500"></i>
+                                        </div>
+                                        <p class="ml-3 text-base text-gray-700">
+                                            Works across local and cloud storage simultaneously
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mt-10 md:mt-0 md:col-span-5">
+                            <div class="relative rounded-lg overflow-hidden bg-gray-100 p-8 h-full flex items-center justify-center">
+                                <img class="w-full h-auto" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Semantic search illustration">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Automatic Renaming Feature -->
+                    <div class="md:grid md:grid-cols-12 md:gap-8">
+                        <div class="md:col-span-5 order-last">
+                            <div class="relative rounded-lg overflow-hidden bg-gray-100 p-8 h-full flex items-center justify-center">
+                                <img class="w-full h-auto" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Automatic renaming illustration">
+                            </div>
+                        </div>
+                        <div class="mt-5 md:mt-0 md:col-span-7">
+                            <div class="feature-card transition-all duration-300 ease-in-out bg-white rounded-xl p-8 shadow-lg">
+                                <h3 class="text-2xl font-bold text-gray-900">
+                                    <i class="fas fa-tags text-blue-500 mr-3"></i> Automatic Renaming
+                                </h3>
+                                <p class="mt-3 text-lg text-gray-500">
+                                    Never struggle with "final_final_v2_revised.docx" again. Fuzzy suggests descriptive, consistent filenames.
+                                </p>
+                                <ul class="mt-5 space-y-3">
+                                    <li class="flex items-start">
+                                        <div class="flex-shrink-0">
+                                            <i class="fas fa-check-circle text-green-500"></i>
+                                        </div>
+                                        <p class="ml-3 text-base text-gray-700">
+                                            AI-generated filename suggestions based on content
+                                        </p>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="flex-shrink-0">
+                                            <i class="fas fa-check-circle text-green-500"></i>
+                                        </div>
+                                        <p class="ml-3 text-base text-gray-700">
+                                            Customizable naming conventions for your team
+                                        </p>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="flex-shrink-0">
+                                            <i class="fas fa-check-circle text-green-500"></i>
+                                        </div>
+                                        <p class="ml-3 text-base text-gray-700">
+                                            Batch rename multiple files at once
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Instant Summarization Feature -->
+                    <div class="md:grid md:grid-cols-12 md:gap-8">
+                        <div class="mt-5 md:mt-0 md:col-span-7">
+                            <div class="feature-card transition-all duration-300 ease-in-out bg-white rounded-xl p-8 shadow-lg">
+                                <h3 class="text-2xl font-bold text-gray-900">
+                                    <i class="fas fa-file-alt text-blue-500 mr-3"></i> Instant Summarization
+                                </h3>
+                                <p class="mt-3 text-lg text-gray-500">
+                                    Get the gist of any document without opening it. Fuzzy generates concise overviews in seconds.
+                                </p>
+                                <ul class="mt-5 space-y-3">
+                                    <li class="flex items-start">
+                                        <div class="flex-shrink-0">
+                                            <i class="fas fa-check-circle text-green-500"></i>
+                                        </div>
+                                        <p class="ml-3 text-base text-gray-700">
+                                            Summarizes documents, spreadsheets, presentations, and more
+                                        </p>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="flex-shrink-0">
+                                            <i class="fas fa-check-circle text-green-500"></i>
+                                        </div>
+                                        <p class="ml-3 text-base text-gray-700">
+                                            Adjustable summary length to suit your needs
+                                        </p>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="flex-shrink-0">
+                                            <i class="fas fa-check-circle text-green-500"></i>
+                                        </div>
+                                        <p class="ml-3 text-base text-gray-700">
+                                            Works even with scanned PDFs and images using OCR
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mt-10 md:mt-0 md:col-span-5">
+                            <div class="relative rounded-lg overflow-hidden bg-gray-100 p-8 h-full flex items-center justify-center">
+                                <img class="w-full h-auto" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Instant summarization illustration">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </footer>
+
+    <!-- Demo Section -->
+    <div id="demo" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base text-blue-600 font-semibold tracking-wide uppercase">See it in action</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    Watch Fuzzy work its magic
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+                    See how Fuzzy can transform your file management workflow
+                </p>
+            </div>
+
+            <div class="mt-12 demo-container bg-white rounded-xl overflow-hidden max-w-4xl mx-auto">
+                <div class="aspect-w-16 aspect-h-9">
+                    <!-- Placeholder for demo video -->
+                    <div class="w-full h-full bg-gray-200 flex items-center justify-center">
+                        <div class="text-center p-8">
+                            <i class="fas fa-play-circle text-6xl text-blue-500 mb-4"></i>
+                            <h3 class="text-xl font-bold text-gray-800">Product Demo Video</h3>
+                            <p class="mt-2 text-gray-600">Coming soon - watch this space!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-3">
+                <div class="pt-6">
+                    <div class="flow-root bg-white rounded-lg px-6 pb-8 h-full border border-gray-200">
+                        <div class="-mt-6">
+                            <div class="text-center">
+                                <span class="inline-flex items-center justify-center p-3 bg-blue-500 rounded-md shadow-lg">
+                                    <i class="fas fa-stopwatch text-white text-xl"></i>
+                                </span>
+                                <h3 class="mt-5 text-lg font-medium text-gray-900 tracking-tight">75% Faster</h3>
+                                <p class="mt-2 text-base text-gray-500">
+                                    Reduce search times by up to 75% compared to traditional methods
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-6">
+                    <div class="flow-root bg-white rounded-lg px-6 pb-8 h-full border border-gray-200">
+                        <div class="-mt-6">
+                            <div class="text-center">
+                                <span class="inline-flex items-center justify-center p-3 bg-blue-500 rounded-md shadow-lg">
+                                    <i class="fas fa-brain text-white text-xl"></i>
+                                </span>
+                                <h3 class="mt-5 text-lg font-medium text-gray-900 tracking-tight">AI-Powered</h3>
+                                <p class="mt-2 text-base text-gray-500">
+                                    Advanced language and vision models understand your content
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-6">
+                    <div class="flow-root bg-white rounded-lg px-6 pb-8 h-full border border-gray-200">
+                        <div class="-mt-6">
+                            <div class="text-center">
+                                <span class="inline-flex items-center justify-center p-3 bg-blue-500 rounded-md shadow-lg">
+                                    <i class="fas fa-lock text-white text-xl"></i>
+                                </span>
+                                <h3 class="mt-5 text-lg font-medium text-gray-900 tracking-tight">Privacy First</h3>
+                                <p class="mt-2 text-base text-gray-500">
+                                    All processing happens locally on your device - your data stays yours
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Statistics Section -->
+    <div id="stats" class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="lg:text-center">
+          <h2 class="text-base text-blue-600 font-semibold tracking-wide uppercase">The Numbers</h2>
+          <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+            The staggering cost of file chaos
+          </p>
+          <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+            Research shows how much time and money is wasted searching for information
+          </p>
+        </div>
+
+        <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <!-- Stat Card 1 -->
+          <div class="stats-card bg-blue-50 rounded-lg overflow-hidden">
+            <div class="p-6">
+              <div class="flex items-center">
+                <div class="flex-shrink-0 bg-blue-100 p-3 rounded-md">
+                  <i class="fas fa-clock text-blue-600 text-xl"></i>
+                </div>
+                <div class="ml-5 w-0 flex-1">
+                  <dl>
+                    <dt class="text-sm font-medium text-gray-500 truncate">Daily Search Time</dt>
+                    <dd>
+                      <div class="text-lg font-medium text-gray-900">2.5 hours</div>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+              <div class="mt-4 text-sm text-gray-500">
+                <p>
+                  <a href="https://blog.ripcord.com/resources/the-real-cost-of-paper-why-government-must-digitize-now"
+                    target="_blank" rel="noopener noreferrer"
+                    class="text-blue-600 underline">
+                    IDC
+                  </a> reports that employees spend up to 2.5 hours per day searching for documents across local and cloud repositories.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stat Card 2 -->
+          <div class="stats-card bg-blue-50 rounded-lg overflow-hidden">
+            <div class="p-6">
+              <div class="flex items-center">
+                <div class="flex-shrink-0 bg-blue-100 p-3 rounded-md">
+                  <i class="fas fa-file text-blue-600 text-xl"></i>
+                </div>
+                <div class="ml-5 w-0 flex-1">
+                  <dl>
+                    <dt class="text-sm font-medium text-gray-500 truncate">Per Document Search</dt>
+                    <dd>
+                      <div class="text-lg font-medium text-gray-900">18 minutes</div>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+              <div class="mt-4 text-sm text-gray-500">
+                <p>
+                  <a href="https://www.intellective.com/time-management-through-enterprise-search/"
+                    target="_blank" rel="noopener noreferrer"
+                    class="text-blue-600 underline">
+                    Gartner
+                  </a> finds professionals take an average of 18 minutes to locate a single file.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stat Card 3 -->
+          <div class="stats-card bg-blue-50 rounded-lg overflow-hidden">
+            <div class="p-6">
+              <div class="flex items-center">
+                <div class="flex-shrink-0 bg-blue-100 p-3 rounded-md">
+                  <i class="fas fa-percentage text-blue-600 text-xl"></i>
+                </div>
+                <div class="ml-5 w-0 flex-1">
+                  <dl>
+                    <dt class="text-sm font-medium text-gray-500 truncate">Work Time Spent</dt>
+                    <dd>
+                      <div class="text-lg font-medium text-gray-900">50%</div>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+              <div class="mt-4 text-sm text-gray-500">
+                <p>
+                  Professionals devote 50% of their work time to information search according to
+                  <a href="https://m-files.com/resources/en-hub/rt-main-blog-en/how-long-does-it-actually-take-to-find-a-document-dissecting-the-many-stats-out-there"
+                    target="_blank" rel="noopener noreferrer"
+                    class="text-blue-600 underline">
+                    Gartner
+                  </a>.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stat Card 4 -->
+          <div class="stats-card bg-blue-50 rounded-lg overflow-hidden">
+            <div class="p-6">
+              <div class="flex items-center">
+                <div class="flex-shrink-0 bg-blue-100 p-3 rounded-md">
+                  <i class="fas fa-dollar-sign text-blue-600 text-xl"></i>
+                </div>
+                <div class="ml-5 w-0 flex-1">
+                  <dl>
+                    <dt class="text-sm font-medium text-gray-500 truncate">Annual Cost</dt>
+                    <dd>
+                      <div class="text-lg font-medium text-gray-900">$3,900</div>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+              <div class="mt-4 text-sm text-gray-500">
+                <p>
+                  Inefficient document management costs businesses roughly $3,900 per $30/hour employee per year in lost productivity
+                  (<a href="https://openviewpartners.com/collaboration-social-tools-drain-business-productivity-costing-millions-in-work-interruptions/"
+                      target="_blank" rel="noopener noreferrer"
+                      class="text-blue-600 underline">
+                    OpenView Partners
+                  </a>).
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stat Card 5 -->
+          <div class="stats-card bg-blue-50 rounded-lg overflow-hidden">
+            <div class="p-6">
+              <div class="flex items-center">
+                <div class="flex-shrink-0 bg-blue-100 p-3 rounded-md">
+                  <i class="fas fa-users text-blue-600 text-xl"></i>
+                </div>
+                <div class="ml-5 w-0 flex-1">
+                  <dl>
+                    <dt class="text-sm font-medium text-gray-500 truncate">Workers Affected</dt>
+                    <dd>
+                      <div class="text-lg font-medium text-gray-900">44–54%</div>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+              <div class="mt-4 text-sm text-gray-500">
+                <p>
+                  <a href="https://www.theladders.com/career-advice/workers-spend-a-ridiculous-amount-of-time-looking-for-files-and-its-killing-productivity"
+                    target="_blank" rel="noopener noreferrer"
+                    class="text-blue-600 underline">
+                    The Ladders
+                  </a> and
+                  <a href="https://www.techrepublic.com/article/more-than-50-of-office-pros-spend-more-time-searching-for-files-than-on-work/"
+                    target="_blank" rel="noopener noreferrer"
+                    class="text-blue-600 underline">
+                    TechRepublic
+                  </a> report that 44–54% of workers waste time searching for needed files each workday.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stat Card 6 -->
+          <div class="stats-card bg-blue-50 rounded-lg overflow-hidden">
+            <div class="p-6">
+              <div class="flex items-center">
+                <div class="flex-shrink-0 bg-blue-100 p-3 rounded-md">
+                  <i class="fas fa-cloud text-blue-600 text-xl"></i>
+                </div>
+                <div class="ml-5 w-0 flex-1">
+                  <dl>
+                    <dt class="text-sm font-medium text-gray-500 truncate">Cloud Search Time</dt>
+                    <dd>
+                      <div class="text-lg font-medium text-gray-900">59 min/day</div>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+              <div class="mt-4 text-sm text-gray-500">
+                <p>
+                  Workers waste around 59 minutes each day looking for information across cloud storage
+                  (<a href="https://www.runn.io/blog/time-management-statistics" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline">
+                    Runn
+                  </a>).
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-12 bg-gray-50 rounded-lg p-6">
+          <h3 class="text-lg font-medium text-gray-900">Additional Research Findings</h3>
+          <div class="mt-4 space-y-4 text-sm text-gray-600">
+            <p>
+              • <a href="https://www.proprofskb.com/blog/workforce-spend-much-time-searching-for-information/" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline">
+                McKinsey
+              </a> shows employees devote an average of 1.8 hours daily to searching and gathering information.
+            </p>
+            <p>
+              • <a href="https://www.coveo.com/en/resources/reports/relevance-report-workplace-2022" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline">
+                Coveo
+              </a>'s 2022 Workplace Relevance Report found employees spend 3.6 hours every workday searching for information.
+            </p>
+            <p>
+              • Employees spend at least two hours per day searching for documents, information, or contacts
+              (<a href="https://www.hcamag.com/us/specialization/employee-engagement/employees-waste-at-least-two-hours-a-day-searching-for-what-they-need-to-work/324737" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline">
+                HCAMag
+              </a>).
+            </p>
+            <p>
+              • Enterprise surveys found the average worker spends 3.2 hours weekly searching for information
+              (<a href="https://slite.com" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline">
+                Slite
+              </a>).
+            </p>
+            <p>
+              • During COVID-19, 22.34% of employees spent half a workday per week searching for information
+              (<a href="https://www.researchgate.net" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline">
+                ResearchGate
+              </a>).
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Join Waitlist CTA & Form -->
+    <div id="join-waitlist" class="gradient-bg py-16">
+      <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
+          Ready to reclaim your time?
+        </h2>
+        <p class="mt-3 text-lg leading-6 text-blue-100">
+          Join our waitlist to be among the first to experience Fuzzy when it launches.
+          Tell us a bit about yourself and what you’ll use it for.
+        </p>
+        <form
+          action="https://formsubmit.co/jtlukomski@gmail.com"
+          method="POST"
+          class="mt-8 space-y-4"
+        >
+          <!-- disable their CAPTCHA if you’d like -->
+          <input type="hidden" name="_captcha" value="false">
+
+          <input
+            type="text"
+            name="name"
+            placeholder="Your name or company"
+            required
+            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter your email"
+            required
+            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+
+          <textarea
+            name="use_case"
+            placeholder="What will you use Fuzzy for?"
+            rows="3"
+            required
+            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          ></textarea>
+
+          <button
+            type="submit"
+            class="w-full px-6 py-2 bg-white text-blue-600 rounded-md hover:bg-gray-100"
+          >
+            Join Waitlist
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800">
+      <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <div class="xl:gsrid xl:grid-cols-2 xl:gap-8">
+          <!-- Logo & Tagline -->
+          <div class="space-y-8 xl:col-span-1">
+            <div class="flex items-center">
+              <img src="assets/logo.png" alt="Fuzzy logo" class="h-8 w-auto mr-2" />
+              <span class="text-xl font-bold text-white">Fuzzy</span>
+            </div>
+            <p class="text-gray-300 text-base">
+              AI-powered file management that saves you hours every day.
+            </p>
+          </div>
+
+          <!-- Product Links -->
+          <div class="mt-12 xl:mt-0 xl:col-span-1">
+            <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">Product</h3>
+            <ul class="mt-4 space-y-4">
+              <li>
+                <a href="#features" class="text-base text-gray-400 hover:text-white">Features</a>
+              </li>
+              <li>
+                <a href="#demo" class="text-base text-gray-400 hover:text-white">Demo</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-12 border-t border-gray-700 pt-8">
+          <p class="text-base text-gray-400 text-center">
+            &copy; 2025 Fuzzy, Inc. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+        // Simple smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Mobile menu toggle functionality would go here
+        // This is just a placeholder since we're not implementing full mobile menu in this example
+    </script>
 </body>
 </html>

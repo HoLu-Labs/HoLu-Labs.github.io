@@ -39,6 +39,15 @@
         .nav-link:hover:after {
             width: 100%;
         }
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+.icon-bounce {
+  animation: float 2.5s ease-in-out infinite;
+}
+
+
     </style>
 </head>
 <body class="font-sans antialiased text-gray-800">
@@ -107,13 +116,28 @@
                         </div>
                     </div>
                 </div>
-                <div class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
-                    <div class="relative mx-auto w-full rounded-lg shadow-lg lg:max-w-md">
-                        <div class="relative block w-full bg-white rounded-lg overflow-hidden">
-                            <img class="w-full" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Person searching for files">
-                        </div>
-                    </div>
+              <div class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
+                <div class="relative block w-full bg-transparent rounded-lg overflow-hidden p-6">
+                  <div class="grid grid-rows-3 grid-flow-col auto-cols-max gap-y-4 gap-x-0">
+                    <img src="assets/c.png"    alt="C file"    class="w-12 h-12 object-contain icon-bounce" style="animation-delay:0s">
+                    <img src="assets/doc.png"  alt="DOC file"  class="w-12 h-12 object-contain icon-bounce" style="animation-delay:0.1s">
+                    <img src="assets/pdf.png"  alt="PDF file"  class="w-12 h-12 object-contain icon-bounce" style="animation-delay:0.2s">
+                    <img src="assets/png.png"  alt="PNG file"  class="w-12 h-12 object-contain icon-bounce" style="animation-delay:0.3s">
+                    <img src="assets/ppt.png"  alt="PPT file"  class="w-12 h-12 object-contain icon-bounce" style="animation-delay:0.4s">
+                    <img src="assets/txt.png"  alt="TXT file"  class="w-12 h-12 object-contain icon-bounce" style="animation-delay:0.5s">
+                    <img src="assets/xlsx.png" alt="XLSX file" class="w-12 h-12 object-contain icon-bounce" style="animation-delay:0.6s">
+                    <img src="assets/html.png" alt="HTML file" class="w-12 h-12 object-contain icon-bounce" style="animation-delay:0.7s">
+                    <img src="assets/java.png" alt="Java file" class="w-12 h-12 object-contain icon-bounce" style="animation-delay:0.8s">
+
+                    <img src="assets/cpp.png"  alt="PNG file"  class="w-12 h-12 object-contain icon-bounce" style="animation-delay:0.3s">
+                    <img src="assets/js.png"  alt="PPT file"  class="w-12 h-12 object-contain icon-bounce" style="animation-delay:0.4s">
+                    <img src="assets/php.png"  alt="TXT file"  class="w-12 h-12 object-contain icon-bounce" style="animation-delay:0.5s">
+                    <img src="assets/h.png" alt="XLSX file" class="w-12 h-12 object-contain icon-bounce" style="animation-delay:0.6s">
+                    <img src="assets/py.png" alt="HTML file" class="w-12 h-12 object-contain icon-bounce" style="animation-delay:0.7s">
+                    <img src="assets/jpg.png" alt="Java file" class="w-12 h-12 object-contain icon-bounce" style="animation-delay:0.8s">
+                  </div>
                 </div>
+              </div>
             </div>
         </div>
     </div>
@@ -216,11 +240,9 @@
                     </div>
                 </div>
                 <div class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
-                    <div class="relative mx-auto w-full rounded-lg shadow-xl overflow-hidden">
-                        <div class="aspect-w-16 aspect-h-9">
-                            <img class="w-full object-cover" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Fuzzy interface">
-                        </div>
-                    </div>
+                  <div class="max-w-[20rem] mx-auto aspect-w-16 aspect-h-9">
+                    <img class="w-full h-full object-cover" src="assets/logo.png" alt="Fuzzy interface">
+                  </div>
                 </div>
             </div>
         </div>
@@ -293,7 +315,7 @@
                     <div class="md:grid md:grid-cols-12 md:gap-8">
                         <div class="md:col-span-5 order-last">
                             <div class="relative rounded-lg overflow-hidden bg-gray-100 p-8 h-full flex items-center justify-center">
-                                <img class="w-full h-auto" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Automatic renaming illustration">
+                                <img class="w-full h-auto" src="assets/files_comp.png" alt="Automatic renaming illustration">
                             </div>
                         </div>
                         <div class="mt-5 md:mt-0 md:col-span-7">
